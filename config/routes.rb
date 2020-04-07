@@ -58,6 +58,9 @@ Rails.application.routes.draw do
   get 'map' => 'gmap#gmap'
   
   get '/watson/watson' => 'watson#watson'
+  
+  get 'intervention' => 'intervention#intervention'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 end

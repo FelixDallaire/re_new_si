@@ -1,0 +1,54 @@
+<div class="container-fluid">
+    <div class="row" style="height: 10vh">
+        <div class="col-md-12">
+
+        </div>
+    </div>
+    <div class="row" style="height: 10vh">
+        <div class="col-md-12 d-flex justify-content-center">
+
+            <%# SELECT USER %>
+        <!--     <div>
+                <select id="customer_list" onchange="getCustomer()">
+                    <option>Select a customer</option>
+                    <% Customer.all.each do |customer|%>
+                    <option><%=customer.contact_full_name%></option>
+                    <% end %>
+                </select>
+            </div> -->
+
+
+    <%= select_tag "customer",
+    options_for_select(Customer.all.map{ |customer| [customer.contact_full_name, customer.id]}),
+    :prompt => "Select Customer"%>
+
+        </div>
+    </div>
+    <div class="row" style="height: 10vh">
+        <div class="col-md-12 d-flex justify-content-center">
+
+    <%= select_tag "building",
+    options_for_select(Building.all.map{ |building| [building.id, building.address_id]}),
+    :prompt => "Select Building"%>
+
+
+        </div>
+    </div>
+    
+</div>
+
+
+<!-- ##########################################JAVACRIPT########################################## -->
+<script>
+    // Hide contact on document ready
+    $(document).ready(function(){
+        $("#contact").hide()
+    })
+
+        $("#customer").on("change", function(event) { 
+     alert("The customer ID is: " + $(this).val())
+});
+
+console.log(<%= @testtest%>)
+
+</script>
