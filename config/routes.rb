@@ -34,15 +34,15 @@ Rails.application.routes.draw do
   get 'submission' => 'quotes#submission'
 
   post 'submission' => 'quotes#create'
- 
-
+  
+  
   get 'employee' => 'pages#employee'
 
   get 'submission' => 'pages#submission'
-
+  
   
   get 'index' => 'pages#index'
-
+  
   get 'users/index' => 'pages#index'
   
   get 'users/index' => 'pages#index'
@@ -50,21 +50,25 @@ Rails.application.routes.draw do
   get 'employee' => 'pages#employee'
   
   get 'dashboard' => 'pages#dashboard'
-
+  
   # Dropbox related routings
   get 'dropbox/auth' => 'dropbox#auth'
   get 'dropbox/auth_callback' => 'dropbox#auth_callback'
-
+  
   get 'map' => 'gmap#gmap'
   
   get '/watson/watson' => 'watson#watson'
   
   get 'intervention' => 'intervention#intervention'
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
+  
+  
   get '/intervention/addresses' => 'intervention#addresses'
   get '/intervention/batteries' => 'intervention#batteries'
   get '/intervention/columns' => 'intervention#columns'
   get '/intervention/elevators' => 'intervention#elevators'
+  get '/intervention/elevator_id' => 'intervention#elevator_id'
+  get '/intervention/employee_id' => 'intervention#employee_id'
+  get '/intervention/description' => 'intervention#description'
+  
+  post 'intervention' => 'intervention#create'
 end

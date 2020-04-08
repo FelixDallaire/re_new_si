@@ -13,16 +13,17 @@
     <div class="row" style="height: 10vh">
         <div class="col-md-12 d-flex justify-content-center">
     
-        <%= form_with model: @customer do |f| %>
-            <%= label_tag("Employee") %>
-                <%= f.select(:employee, Employee.all.collect {|e| [e.firstName + " " + e.lastName, e.id]},  {prompt: "Select Employee"}, {class: 'form-control'}) %>
-
+        <%# <%= form_tag "/intervention", method: 'post' do %> 
+        <%= form_with model: @intervention do |f| %>
             <%= label_tag("Customer Infos") %>
                 <%= f.select(:customer, Customer.all.collect {|c| [c.contact_full_name + " - " + c.business_name, c.id]},  {prompt: "Select Customer"}, {class: 'form-control'}) %>
                 <%= f.select(:address, Address.all.collect {|a| [a.street_number_name, a.id]}, {}, {class: 'form-control'}) %>
                 <%= f.select(:battery, Battery.all.collect {|b| [b.id, b.id]}, {}, {class: 'form-control'}) %>
                 <%= f.select(:column, Column.all.collect {|col| [col.id, col.id]}, {}, {class: 'form-control'}) %>
                 <%= f.select(:elevator, Elevator.all.collect {|e| [e.id, e.id]}, {}, {class: 'form-control'}) %>
+
+            <%= label_tag("Employee") %>
+                <%= f.select(:employee, Employee.all.collect {|e| [e.firstName + " " + e.lastName, e.id]},  {prompt: "Select Employee"}, {class: 'form-control'}) %>
 
             <%= label_tag("Description") %>
                 <%= text_field_tag 'description', nil, placeholder: "Description" %><br>
@@ -48,6 +49,7 @@ $(document).ready(function() {
 </script>
 
 <script>
+// Customer
 $("#address").prop("disabled", true); // second dropdown is disable while first dropdown is empty
 $("#customer").change(function(){
   	var customer_id = $(this).val();
@@ -72,7 +74,7 @@ $("#customer").change(function(){
 
 	      	$("#address").append('<option>Select address</option>');
 	      	for(var i = 0; i < address.length; i++){
-	      		$("#address").append('<option value="' + address[i]["id"] + '">' +address[i]["street_number_name"] + '</option>');
+	      		$("#address").append('<option value="' + address[i]["id"] + '">' + address[i]["street_number_name"] + " " + address[i]["city"] + " " + address[i]["state_province"] + '</option>');
 	      	}
 	    }
   	});
@@ -80,7 +82,7 @@ $("#customer").change(function(){
 </script>
 
 <script>
-// LINK WITH BATTERY
+// Battery
 $("#battery").prop("disabled", true); // second dropdown is disable while first dropdown is empty
 $("#address").change(function(){
   	var building_address = $(this).val();
@@ -113,7 +115,7 @@ $("#address").change(function(){
 </script>
 
 <script>
-// LINK WITH ELEVATOR
+// Column
 $("#column").prop("disabled", true); // second dropdown is disable while first dropdown is empty
 $("#battery").change(function(){
   	var battery_id = $(this).val();
@@ -147,7 +149,7 @@ $("#battery").change(function(){
 </script>
 
 <script>
-// LINK WITH ELEVATOR
+// Elevator
 $("#elevator").prop("disabled", true); // second dropdown is disable while first dropdown is empty
 $("#column").change(function(){
   	var column_id = $(this).val();
@@ -173,9 +175,66 @@ $("#column").change(function(){
               $("#elevator").append('<option>Select elevator</option>');
 	      	for(var i = 0; i < elevator.length; i++){
                 // console.log(elevator);
-	      		$("#elevator").append('<option value="' + elevator[i]["id"] + '"> Elevator ' + elevator[i]["id"] + '</option>');
+	      		$("#elevator").append('<option value="' + elevator[i]["id"] + '"> Elevator ' + elevator[i]["id"] + " - " + elevator[i]["model"] + '</option>');
 	      	}
 	    }
   	});
+});
+</script>
+
+<script>
+// Elevator Id 
+$("#elevator").change(function(){
+  	var elevator_id = $(this).val();
+    $.ajax({
+	    url: "/intervention/elevator_id",
+	    method: "GET",  
+	    dataType: "json",
+	    data: {elevator_id: elevator_id},
+	    error: function (xhr, status, error) {
+	      	console.error('AJAX Error: ' + status + error);
+	    },
+	    success: function (response) {
+              console.log(response);
+        }
+    });
+});
+</script>
+
+<script>
+// Employee Id 
+$("#employee").change(function(){
+  	var employee_id = $(this).val();
+    $.ajax({
+	    url: "/intervention/employee_id",
+	    method: "GET",  
+	    dataType: "json",
+	    data: {employee_id: employee_id},
+	    error: function (xhr, status, error) {
+	      	console.error('AJAX Error: ' + status + error);
+	    },
+	    success: function (response) {
+              console.log(response);
+        }
+    });
+});
+</script>
+
+<script>
+// Employee Id 
+$("#description").change(function(){
+  	var description = $(this).val();
+    $.ajax({
+	    url: "/intervention/description",
+	    method: "GET",  
+	    dataType: "json",
+	    data: {description: description},
+	    error: function (xhr, status, error) {
+	      	console.error('AJAX Error: ' + status + error);
+	    },
+	    success: function (response) {
+              console.log(response);
+        }
+    });
 });
 </script>

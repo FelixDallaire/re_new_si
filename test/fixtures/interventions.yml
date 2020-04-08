@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  Author: 1
+  CustomerID: 1
+  BuildingID: 1
+  BatteryID: 1
+  ColumnID: 1
+  ElevatorID: 
+  EmployeeID: 
+  Date_start: 2020-04-07 20:55:06
+  Date_end: 2020-04-07 20:55:06
+  Résultat: MyString
+  Rapport: MyString
+  Statut: MyString
+
+two:
+  Author: 1
+  CustomerID: 1
+  BuildingID: 1
+  BatteryID: 1
+  ColumnID: 1
+  ElevatorID: 
+  EmployeeID: 
+  Date_start: 2020-04-07 20:55:06
+  Date_end: 2020-04-07 20:55:06
+  Résultat: MyString
+  Rapport: MyString
+  Statut: MyString
