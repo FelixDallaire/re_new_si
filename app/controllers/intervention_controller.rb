@@ -76,42 +76,42 @@ class InterventionController < ApplicationController
             end
     end
 
-    def elevator_id
-            @elevator_id = params[:elevator_id]
-            respond_to do |format|
-                format.json {
-                    render json: {elevator_id: @elevator_id}
-                }
-            end
-    end
+    # def elevator_id
+    #         @elevator_id = params[:elevator_id]
+    #         respond_to do |format|
+    #             format.json {
+    #                 render json: {elevator_id: @elevator_id}
+    #             }
+    #         end
+    # end
 
-    def employee_id
-            @employee_id = params[:employee_id]
-            respond_to do |format|
-                format.json {
-                    render json: {employee_id: @employee_id}
-                }
-            end
-    end
+    # def employee_id
+    #         @employee_id = params[:employee_id]
+    #         respond_to do |format|
+    #             format.json {
+    #                 render json: {employee_id: @employee_id}
+    #             }
+    #         end
+    # end
 
-    def description
-            @description = params[:description]
-            respond_to do |format|
-                format.json {
-                    render json: {description: @description}
-                }
-            end
-    end
+    # def description
+    #         @description = params[:description]
+    #         respond_to do |format|
+    #             format.json {
+    #                 render json: {description: @description}
+    #             }
+    #         end
+    # end
 
     def create
           @intervention = Intervention.create(
             Author:  current_user.firstName + " " + current_user.lastName,
-            CustomerID:params[:customer_id].to_i,
-            BuildingID:params[:building_address].to_i,
-            BatteryID:params[:battery_id].to_i,
-            ColumnID:params[:column_id].to_i,
-            ElevatorID:params[:elevator_id].to_i,
-            EmployeeID:params[:employee_id].to_i,
+            CustomerID:params[:customer],
+            BuildingID:params[:address],
+            BatteryID:params[:battery],
+            ColumnID:params[:column],
+            ElevatorID:params[:elevator],
+            EmployeeID:params[:employee],
             # Date_start
             # Date_end
             Résultat:[:Incomplete].sample,
