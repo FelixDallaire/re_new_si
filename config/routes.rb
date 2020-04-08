@@ -63,4 +63,8 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+  get '/intervention/addresses' => 'intervention#addresses'
+  get '/intervention/batteries' => 'intervention#batteries'
+  get '/intervention/columns' => 'intervention#columns'
+  get '/intervention/elevators' => 'intervention#elevators'
 end

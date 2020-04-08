@@ -30,7 +30,7 @@ class Customer < ApplicationRecord
       end
     end
 
-    def custemr_does_not_exist
+    def customer_does_not_exist
     end
 
   end
