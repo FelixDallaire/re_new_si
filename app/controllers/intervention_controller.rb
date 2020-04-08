@@ -20,6 +20,7 @@ class InterventionController < ApplicationController
             build_id = i.address_id
             @building_id_list.push(build_id)
         end
+        @business_name = Customer.find(params[:customer_id]).business_name
         
         if params[:customer_id].present?
             @addresses = Address.where(id: @building_id_list)
@@ -105,7 +106,7 @@ class InterventionController < ApplicationController
 
     def create
           @intervention = Intervention.create(
-            Author:  current_user.firstName + " " + current_user.lastName,
+            Author: current_user.firstName + " " + current_user.lastName,
             CustomerID:params[:customer],
             BuildingID:params[:address],
             BatteryID:params[:battery],
@@ -120,14 +121,18 @@ class InterventionController < ApplicationController
           )
 
     
-        #   ZendeskAPI::Ticket.create!($client, 
-        #     :subject => "#{@quote.firstName} from #{@quote.companyName}",
-        #     :comment => { :value => "The contact #{@quote.firstName} from company #{@quote.companyName} can be reached 
-        #     at email #{@quote.email} and at phone number #{@quote.phoneNumber}. 
-        #     The building type is #{@quote.buildingType} and there are #{@quote.nbElevatorNeeded} elevator cages required. 
-        #     The total cost is #{@quote.totalCost} $, including #{@quote.instllationCost} $ for installation." }, 
-        #     :type => 'task',
-        #     :priority => "normal")
+          ZendeskAPI::Ticket.create!($client, 
+            :subject => "New intervention from #{@intervention.Author} for #{@business_name}'s building.'",
+            :comment => { :value => "There is a new intervention at the building id:#{@intervention.BuildingID}.
+            Here is the informations of the building:
+            Battery id: #{@intervention.BatteryID}
+            Column id: #{@intervention.ColumnID}
+            Elevator id: #{@intervention.ElevatorID}
+            Employee in charge of the intervention: #{@intervention.EmployeeID}
+            Description: #{@intervention.Rapport}
+            " }, 
+            :type => 'problem',
+            :priority => "normal")
      
         redirect_to "/intervention"
     end
