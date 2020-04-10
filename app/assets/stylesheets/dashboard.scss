@@ -1,10 +1,38 @@
+// #b92c28 -red
+// #28a4c9 - lightblue
+// #245580 -darkblue
+
 body{
-    background-color: none;
+    background-color: #4e4b4b;
+}
+    
+.body-container{
+    background-color: #4e4b4b;
+    height:auto;
+    display:relative
 }
 
-table::-webkit-scrollbar{width:5px}
-table::-webkit-scrollbar-track{background:#4b443d;border-radius:0px}
-table::-webkit-scrollbar-thumb{background:#cccccc;border-radius:10px}
+.scrolling-wrapper {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: auto;
+    .card {
+        background-color: #272325; 
+        color:#F23664;
+      display: inline-block;
+      width: 50vh;
+      height:70vh;
+      text-align: center;
+    }
+    &::-webkit-scrollbar {
+        display:none;
+      }
+      h2{
+          color: #F23664;
+          font-weight: bolder;
+      }
+ }
 
 table{
     font-size: 1vh;
@@ -18,53 +46,51 @@ table{
     overflow: auto;
 }
 
-.profile_container{
-    background-color: white;
-    height: auto;
-    width: auto;
-    padding: 3vh 10vh;
-    margin: 3vh;
-    text-align: center;
-    color: black;
-    border-radius: 10px;
-    box-shadow: 5px 5px 11px rgba(177, 171, 171, 0.15), 
-                -5px -5px 11px rgba(236, 236, 236, 0.50)
-}    
 
-#userAvatar {
-    margin: 2vh;
-    border-radius: 100%;
+.footer{
+    display:absolute;
+    bottom:0px;
 }
 
-
-
-
-#nav-profile h1{
-    color: black;
-    text-align: center;
-    margin :1vh
+#quotes-container{
+    background-color: #4e4b4b;
 }
 
-#main{
-    color: rgb(255, 255, 255);
-    font-weight: bold;
-    text-align: center;
-    margin: 1vh;
-    width: 80vh
+#quotes-container t{
+   border: none;
 }
 
-.lowerNav a{
-    color: rgb(172, 172, 172);
-    background-color: rgb(231, 231, 231);
-    width: 10vh;
-    padding: 1vh 25vh 1vh 20vh;
-    text-align: left;
-    margin: 1vh 0vh
+#userAvatar{
+    filter: invert(100%);
 }
 
+// ANIMATION ######
 
-
-
-.lowerNac_container{
-background-color: white;
+.bounce-right-text{
+    position: absolute;
+    right: 10vh;
+    font-weight: bolder;
+    color: #F23664;
 }
+
+.bounce-right-arrow{
+    position: absolute;
+    right: -5vh;
+    animation: bouncing-right 2s infinite ease-in-out;
+}
+
+@keyframes bouncing-right{
+    0%{right:-5vh}
+    25%{right: -6vh}
+    50%{right: -5vh}
+    75%{right: -6vh}
+    100%{right: -5vh}
+}
+
+#chartContainer{
+    background-color: rgba(0, 0, 255, 0);
+}
+
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:#463f4200;border-radius:25px}
+::-webkit-scrollbar-thumb{background:#f23664;border-radius:25px}

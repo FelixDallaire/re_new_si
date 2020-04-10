@@ -1,87 +1,128 @@
-
-
-
-
-
-<div id="nav">
-	<div class="nav nav-tabs  lowerNav" id="nav-tab" role="tablist">
-    	<a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="true">Profile</a>
-    	<a class="nav-item nav-link" id="nav-quotes-tab" data-toggle="tab" href="#nav-quotes" role="tab" aria-controls="nav-quotes" aria-selected="false">Quotes</a>
-	</div>
-</div>
-<div class="tab-content d-flex justify-content-center lowerNac_container" id="nav-tabContent">
-	<%# TAB ONE ####################################%>
-	<div class="tab-pane fade show active" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-		<% if user_signed_in? %>
-			<h1>Welcome <%= current_user.firstName %> </h1>
-		<div class="profile_container">
-			<img id="userAvatar" src="/assets/user.png" alt="" style="max-width: 10vh; max-height: 10vh;">
-			<p class="userInfos"><i class="fa fa-user" aria-hidden="true"></i><%= " " + current_user.firstName + " " +  current_user.lastName %></p> <br>
-			<p class="userInfos"><i class="fa fa-envelope" aria-hidden="true"></i><%= " " + current_user.email %></p> <br>
-			<p class="userInfos"><i class="fa fa-phone" aria-hidden="true"></i><%= " " + current_user.phoneNumber %></p> <br>
-			<p class="userInfos"><i class="fa fa-address-card" aria-hidden="true"></i><%= " " + current_user.job_title %></p> <br>
-		</div>
-			<div id="main">
-		    	<a href="/index">Return to main page</a>
+<div class="body-container">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12" style="height:15vh; text-align: center">
+				<h1>Dashboard</h1>
+				<h3>Welcome <%= current_user.firstName + " " + current_user.lastName %> !</h3>
 			</div>
-		<% else %>
-  			<li>
-  			<%= link_to('Login', new_user_session_path) %>  
-  			</li>
-		<% end %>
+		</div>
+		<div class="row">
+			<div class="scrolling-wrapper">
+				<div class="card">
+					<h2>Profile</h2>
+					<% if user_signed_in? %>
+						<div class="profile_container">
+							<img id="userAvatar" src="/assets/user.png" alt="" style="max-width: 10vh; max-height: 10vh;">
+							<p class="userInfos"><i class="fa fa-user" aria-hidden="true"></i><%= " " + current_user.firstName + " " +  current_user.lastName %></p> <br>
+							<p class="userInfos"><i class="fa fa-envelope" aria-hidden="true"></i><%= " " + current_user.email %></p> <br>
+							<p class="userInfos"><i class="fa fa-phone" aria-hidden="true"></i><%= " " + current_user.phoneNumber %></p> <br>
+							<p class="userInfos"><i class="fa fa-address-card" aria-hidden="true"></i><%= " " + current_user.job_title %></p> <br>
+						</div>
+            		<% else %>
+						<li>
+							<%= link_to('Login', new_user_session_path) %>  
+						</li>
+            		<% end %>
+				</div>
+				<div class="card" id="card2">
+					<h2>Buildings</h2>
+					<p>Number of building <%= @user_building_count%><br>_________________________________________</p>
+					<% @all_buildings.each do |b| %>
+							<% Address.where(id: b.address_id).each do |c| %>
+						  <p>ID <%= b.id%> • <%= c.status %></p>
+						  <p><%=c.street_number_name%>, <%= c.city%>, <%= c.state_province%>, <%= c.country%>, <%= c.zip_code%> <br>_________________________________________</p>
+							<%end%>
+					<%end%>
+				</div>
+				<div class="card">
+					<h2>Batteries</h2>
+					<p>Number of battery <%= @user_battery_count%><br>_________________________________________</p>
+					<% @all_batteries.each do |b| %>
+						<p>Battery ID <%= b.id %> • Building ID <%= b.building_id %> <br>_________________________________________</p>
+					<%end%>
+				</div>
+				<div class="card">
+					<h2>Columns</h2>
+					<p>Number of columns <%= @user_columns_count%><br>_________________________________________</p>
+					<% @all_columns.each do |c| %>
+						<p>Column ID <%= c.id %> • Battery ID <%= c.battery_id %> <br>_________________________________________</p>
+					<%end%>
+				</div>
+				<div class="card">
+					<p>Number of elevators <%= @user_elevator_count%><br>_________________________________________</p>
+					<h2>Elevators</h2>
+					<% @all_elevators.each do |e| %>
+						<p>Elevator serial number • <%= e.serial_number %> <br>
+						<%= e.model%> • <%= e.status%>
+						<br> Column ID <%= e.column_id %> <br>_________________________________________</p>
+					<%end%>
+				</div>
+				<div class="card" id="card9">
+					<h2>Coming soon•••</h2>
+					<img src="/assets/RocketLogo.png" alt="rocket logo" style="width: 50%; height:auto; margin-top:5vh">
+				</div>
+			</div>
+		</div>
+		<div class="row" id="quotes-container">
+				<p style="color:F23664" class="bounce-right-text">Scroll <i class="fa fa-arrow-right bounce-right-arrow fa-2x" aria-hidden="true"></i></p>
+				<h1 style="margin:auto">Quotes</h1>
+				<% @all_Quotes.each do |une_quote| %>
+				  <% if current_user.email == une_quote.email %>
+				<table class="table table-sm table-condensed table-striped table-dark">
+				  <thead class="thead-dark">
+					<tr>
+						<th scope="col">id</th>
+						<th scope="col"> First Name</th>
+						<th scope="col">Phone Number </th>
+						<th scope="col">Compangny name</th>
+						<th scope="col">email</th>
+						<th scope="col"> buildingType</th>
+						<th scope="col">nb Appartment </th>
+						<th scope="col">nb Business</th>
+						<th scope="col">nb Floor</th>
+						<th scope="col"> nb Basement</th>
+						<th scope="col">nbCage </th>
+						<th scope="col">nb Parking</th>
+						<th scope="col">nb OccupantFloor</th>
+						<th scope="col"> nb OperatingHours</th>
+						<th scope="col">nb ElevatorNeeded </th>
+						<th scope="col">instllation Cost</th>
+						<th scope="col">total Cost </th>
+					</tr>
+				  </thead>
+				  <tbody>
+					<tr>
+						<th scope="row"> <%=une_quote.id %></th>
+						<td><%=une_quote.firstName %></td>
+						<td><%=une_quote.phoneNumber %></td>
+						<td><%=une_quote.companyName %></td>
+						<td><%=une_quote.email %></td>
+						<td><%=une_quote.buildingType %></td>
+						<td><%=une_quote.nbAppartment %></td>
+						<td><%=une_quote.nbBusiness %></td>
+						<td><%=une_quote.nbFloor %></td>
+						<td><%=une_quote.nbBasement %></td>
+						<td><%=une_quote.nbCage %></td>
+						<td><%=une_quote.nbParking %></td>
+						<td><%=une_quote.nbOccupantFloor %></td>
+						<td><%=une_quote.nbOperatingHours %></td>
+						<td><%=une_quote.nbElevatorNeeded %></td>
+						<td><%=une_quote.instllationCost %></td>
+						<td><%=une_quote.totalCost %></td>
+					</tr>
+				  </tbody>
+				</table>
+				<%end%>      
+				<%end%>
+			  </div>
 	</div>
-	<%# TAB TWO ####################################%>
-  	<div class="tab-pane fade" id="nav-quotes" role="tabpanel" aria-labelledby="nav-quotes-tab">
-		<% @all_Quotes.each do |une_quote| %>
-  		<% if current_user.email == une_quote.email %>
-		<table class="table table-sm table-bordered table-condensed">
-		  <thead class="thead-dark">
-		    <tr>
-				<th scope="col">id</th>
-				<th scope="col"> First Name</th>
-				<th scope="col">Phone Number </th>
-				<th scope="col">Compangny name</th>
-				<th scope="col">email</th>
-				<th scope="col"> buildingType</th>
-				<th scope="col">nb Appartment </th>
-				<th scope="col">nb Business</th>
-				<th scope="col">nb Floor</th>
-				<th scope="col"> nb Basement</th>
-				<th scope="col">nbCage </th>
-				<th scope="col">nb Parking</th>
-				<th scope="col">nb OccupantFloor</th>
-				<th scope="col"> nb OperatingHours</th>
-				<th scope="col">nb ElevatorNeeded </th>
-				<th scope="col">instllation Cost</th>
-				<th scope="col">total Cost </th>
-		    </tr>
-		  </thead>
-		  <tbody>
-		    <tr>
-				<th scope="row"> <%=une_quote.id %></th>
-				<td><%=une_quote.firstName %></td>
-				<td><%=une_quote.phoneNumber %></td>
-				<td><%=une_quote.companyName %></td>
-				<td><%=une_quote.email %></td>
-				<td><%=une_quote.buildingType %></td>
-				<td><%=une_quote.nbAppartment %></td>
-				<td><%=une_quote.nbBusiness %></td>
-				<td><%=une_quote.nbFloor %></td>
-				<td><%=une_quote.nbBasement %></td>
-				<td><%=une_quote.nbCage %></td>
-				<td><%=une_quote.nbParking %></td>
-				<td><%=une_quote.nbOccupantFloor %></td>
-				<td><%=une_quote.nbOperatingHours %></td>
-				<td><%=une_quote.nbElevatorNeeded %></td>
-				<td><%=une_quote.instllationCost %></td>
-				<td><%=une_quote.totalCost %></td>
-		    </tr>
-		  </tbody>
-		</table>
-		<%end%>      
-		<%end%>
-  	</div>
 </div>
 
 <!--*******************************************************************************************************************************************************************************************************************************************
 	*******************************************************************************************************************************************************************************************************************************************-->
+<script>
+	$(document).ready(function(){
+		$('#contact, #contact-us').hide()
+	  });
+</script>
+

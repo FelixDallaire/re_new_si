@@ -1,36 +1,47 @@
-<div class="container-fluid">
+<body style="background-color: #ffeee4; ">
+<link rel="submission.css" type="text/css" href="theme.css">
+<div class="container">
     <div class="row" style="height: 10vh">
         <div class="col-md-12">
 
         </div>
     </div>
-    <div class="row" style="height: 10vh">
+    <div class="row" style="height: 5vh">
         <div class="col-md-12 d-flex justify-content-center">
 
 
         </div>
-    </div>
-    <div class="row" style="height: 10vh">
-        <div class="col-md-12 d-flex justify-content-center">
+	</div>
+	<div class="row">
+		<div class="col-md-12 d-flex justify-content-center">
+			<h1 style="color: #5a5a5a; font-weight: bold;">Interventions</h1>
+		</div>
+	</div>
+    <div class="row d-flex justify-content-center" style="height: 10vh">
+        <div class="col-md-5 d-flex justify-content-center">
+			<div id="dropdown-form">
+				<%# <%= form_tag "/intervention", method: 'post' do %> 
+				<%= form_with model: @intervention do |f| %>
+					<%= label_tag("Customer Infos") %>
+						<%= f.select(:customer, Customer.all.collect {|c| [c.contact_full_name + " - " + c.business_name, c.id]},  {prompt: "Select Customer"}, {class: 'form-control dropdown_field'}) %>
+						<%= f.select(:address, Address.all.collect {|a| [a.street_number_name, a.id]}, {}, {class: 'form-control dropdown_field'}) %>
+						<%= f.select(:battery, Battery.all.collect {|b| [b.id, b.id]}, {}, {class: 'form-control dropdown_field'}) %>
+						<%= f.select(:column, Column.all.collect {|col| [col.id, col.id]}, {}, {class: 'form-control dropdown_field'}) %>
+						<%= f.select(:elevator, Elevator.all.collect {|e| [e.id, e.id]}, {}, {class: 'form-control dropdown_field'}) %>
+		
+					<%= label_tag("Employee") %>
+						<%= f.select(:employee, Employee.all.collect {|e| [e.firstName + " " + e.lastName, e.id]},  {prompt: "Select Employee"}, {class: 'form-control dropdown_field'}) %>
+		
+					<%= label_tag("Description") %>
+						<!-- <%= text_field_tag 'description', nil, placeholder: "Description" %><br> -->
+						<textarea required="" maxlength="1000" rows="6" class="form-control" name="description" id="description" spellcheck="false"></textarea>
+				<div class="submission-container d-flex justify-content-center">
+					<%# BUTTON SUBMIT %>
+					<input class="btn btn-outline-success btn-lg submitBtn submission_form submit-btn" type="submit" value="Submit" /> <br>
+				</div>
+				<%end%>
+			</div>
     
-        <%# <%= form_tag "/intervention", method: 'post' do %> 
-        <%= form_with model: @intervention do |f| %>
-            <%= label_tag("Customer Infos") %>
-                <%= f.select(:customer, Customer.all.collect {|c| [c.contact_full_name + " - " + c.business_name, c.id]},  {prompt: "Select Customer"}, {class: 'form-control'}) %>
-                <%= f.select(:address, Address.all.collect {|a| [a.street_number_name, a.id]}, {}, {class: 'form-control'}) %>
-                <%= f.select(:battery, Battery.all.collect {|b| [b.id, b.id]}, {}, {class: 'form-control'}) %>
-                <%= f.select(:column, Column.all.collect {|col| [col.id, col.id]}, {}, {class: 'form-control'}) %>
-                <%= f.select(:elevator, Elevator.all.collect {|e| [e.id, e.id]}, {}, {class: 'form-control'}) %>
-
-            <%= label_tag("Employee") %>
-                <%= f.select(:employee, Employee.all.collect {|e| [e.firstName + " " + e.lastName, e.id]},  {prompt: "Select Employee"}, {class: 'form-control'}) %>
-
-            <%= label_tag("Description") %>
-                <%= text_field_tag 'description', nil, placeholder: "Description" %><br>
-
-            <%# BUTTON SUBMIT %>
-            <input class="btn btn-outline-success btn-lg submitBtn submission_form" type="submit" value="Submit" /> <br>
-        <%end%>
 
         </div>
     </div>
@@ -45,6 +56,7 @@ $(document).ready(function() {
     //Hide contact on load
     $("#contact, #footer").hide();
     $("#address, #battery, #column, #elevator").hide();
+    $("#customer, #address, #battery, #description, #employee").attr("required", true);
 });
 </script>
 
@@ -72,7 +84,7 @@ $("#customer").change(function(){
 	      	var address = response["address"];
 	      	$("#address").empty();
 
-	      	$("#address").append('<option>Select address</option>');
+	      	$("#address").append('<option value>Select address</option>');
 	      	for(var i = 0; i < address.length; i++){
 	      		$("#address").append('<option value="' + address[i]["id"] + '">' + address[i]["street_number_name"] + " " + address[i]["city"] + " " + address[i]["state_province"] + '</option>');
 	      	}
@@ -105,7 +117,7 @@ $("#address").change(function(){
 	      	var battery = response["battery"];
 	      	$("#battery").empty();
 
-              $("#battery").append('<option>Select battery</option>');
+              $("#battery").append('<option value>Select battery</option>');
 	      	for(var i = 0; i < battery.length; i++){
 	      		$("#battery").append('<option value="' + battery[i]["id"] + '"> Battery ' + battery[i]["id"] + '</option>');
 	      	}
@@ -138,7 +150,7 @@ $("#battery").change(function(){
 	      	var column = response["column"];
 	      	$("#column").empty();
 
-              $("#column").append('<option>Select column</option>');
+              $("#column").append('<option value>Select column</option>');
 	      	for(var i = 0; i < column.length; i++){
                 // console.log(column);
 	      		$("#column").append('<option value="' + column[i]["id"] + '"> Column ' + column[i]["id"] + '</option>');
@@ -172,7 +184,7 @@ $("#column").change(function(){
 	      	var elevator = response["elevator"];
 	      	$("#elevator").empty();
 
-              $("#elevator").append('<option>Select elevator</option>');
+              $("#elevator").append('<option value>Select elevator</option>');
 	      	for(var i = 0; i < elevator.length; i++){
                 // console.log(elevator);
 	      		$("#elevator").append('<option value="' + elevator[i]["id"] + '"> Elevator ' + elevator[i]["id"] + " - " + elevator[i]["model"] + '</option>');

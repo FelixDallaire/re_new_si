@@ -113,3 +113,37 @@ display:none;
     margin: 5vh;
     opacity: .8;
 }
+
+// DROPDOWN
+#dropdown-form {
+    color:#5a5a5a;
+    background-color:white;
+    padding: 10vh 5vh 10vh 10vh;
+    height: auto;
+    border-radius: 1vh;
+    border:solid 1vh #ffc281;
+    position: relative;
+}
+
+#dropdown-form select{
+    border: solid .15vh lightgray;
+}
+
+// #dropdown-form option{
+// }
+
+#description{
+    width: 50vh;
+    border-radius: .50vh;
+    border:none;
+    border: solid .15vh lightgray
+}
+
+.submit-btn{
+    border: solid .25vh #7dbd1d;
+    color: #7dbd1d;
+    margin-top: 5vh;
+    position: absolute;
+    bottom: 1vh;
+}
+

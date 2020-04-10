@@ -126,7 +126,18 @@ end
 
     def dashboard
       @all_Quotes = Quote.all
+      @all_buildings = Building.where(customer_id: current_user.id)
+      @user_building_count = @all_buildings.count
 
+      @all_batteries = Battery.where(building_id:@all_buildings.ids)
+      @user_battery_count = @all_batteries.count
+      
+      @all_columns = Column.where(battery_id:@all_batteries)
+      @user_columns_count = @all_columns.count
+      
+      @all_elevators = Elevator.where(column_id: @all_columns) 
+      @user_elevators_count = @all_elevators.count
+      
      end
   
     # def createUser
