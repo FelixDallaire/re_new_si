@@ -1,6 +1,4 @@
 # Rocket_Elevators_Controllers
-Week 7
-
 Site is now online at http://fellixdallaire.ca/. Rails, mySQL and postgreSQL was used to make this possible.
 
 Admin :     admin@hotmail.com/////123456 
@@ -59,6 +57,7 @@ Steps to test the API:
     5- Access the "Views" page to check out the received tickets
 
 # Rest API Testing
+    https://github.com/FelixDallaire/restapi.git
     Collection: https://www.getpostman.com/collections/c276ea6beb9f94c4ab21
     Test the collection
 
