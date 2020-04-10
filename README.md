@@ -57,3 +57,13 @@ Steps to test the API:
     3- Then access our Zendesk account online at https://www.zendesk.com/login/
     4- Use the credentials already sent to the client
     5- Access the "Views" page to check out the received tickets
+
+# Rest API Testing
+    Collection: https://www.getpostman.com/collections/c276ea6beb9f94c4ab21
+    Test the collection
+
+# Intervention
+    Go to admin account and go to felixdallaire.ca/intervention
+    
+ # Dashboard testing
+    COnnect with a user account and go to felixdallaire.ca/dashboard
