@@ -43,7 +43,7 @@ class PagesController < ApplicationController
       from: {
         email: "info@felixdallaire.ca"
       },
-      template_id: "d-914f77d8b1a546c3b80d6d6ba05bd4e7"
+      template_id: ENV['sendgrid_template_id']
     }
     puts "********************************************"
     sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])

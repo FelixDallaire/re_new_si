@@ -21,6 +21,7 @@ gem 'twilio-ruby'
 gem 'pg' 
 
 gem 'devise'
+gem 'devise_zxcvbn'
 
 gem 'faker'
 

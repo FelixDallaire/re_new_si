@@ -11,8 +11,8 @@ module SendSms
             auth_token = ENV["auth_token"]
             client = Twilio::REST::Client.new(account_sid, auth_token)
             
-            from = '+12035997964' # Your Twilio number
-            to = '+15819831152' # Your mobile phone number
+            from = ENV['twilio_from'] # Your Twilio number
+            to = ENV['twilio_to'] # Your mobile phone number
             
             client.messages.create(
             from: from,
