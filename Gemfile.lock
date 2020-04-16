@@ -446,7 +446,7 @@ DEPENDENCIES
   capistrano (~> 3.12)
   capistrano-bundler (>= 1.1.0)
   capistrano-rails (~> 1.4)
-  capistrano3-puma
+  capistrano3-puma (>= 3.1.1)
   capybara (>= 2.15)
   chromedriver-helper
   coffee-rails (~> 4.2)
@@ -486,4 +486,4 @@ RUBY VERSION
    ruby 2.6.5p114
 
 BUNDLED WITH
-   2.1.4
+   1.17.3

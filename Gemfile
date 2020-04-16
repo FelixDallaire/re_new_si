@@ -92,7 +92,7 @@ gem 'capistrano', '~> 3.12', require: false
 gem 'capistrano-rails', '~> 1.4', require: false
 gem 'capistrano-bundler', '>= 1.1.0'
 gem 'rvm1-capistrano3', require: false
-gem 'capistrano3-puma'
+gem 'capistrano3-puma', '>= 3.1.1'
 
 # Dropbox
 gem 'dropbox_api'
