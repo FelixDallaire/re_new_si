@@ -1,7 +1,7 @@
 # Rocket_Elevators_Controllers
 Site is now online at http://fellixdallaire.ca/. Rails, mySQL and postgreSQL was used to make this possible.
 
-Admin :     admin@hotmail.com/////123456 
+Admin :     admin@hotmail.com/////Codeb0XX11QC05 
 Basic User:       user@hotmail.com/////123456
 
 1- Create the postgres database : rake dataTransfert:create_psql_db         /!\ You'ill probably need to change the information to connect to psql database
