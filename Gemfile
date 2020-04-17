@@ -33,7 +33,7 @@ gem "font-awesome-rails" #✔
 
 gem 'geocoder' #✔
 
-gem 'rails-html-sanitizer', '~> 1.0', '>= 1.0.3'
+gem 'rails-html-sanitizer', '~> 1.0', '>= 1.0.4'
 gem "secure_headers"
 
 gem 'ibm_watson' #✔
