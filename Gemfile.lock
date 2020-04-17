@@ -472,7 +472,7 @@ DEPENDENCIES
   rails_admin (~> 2.0)
   rvm1-capistrano3
   sass-rails (~> 5.0)
-  secure_headers (>= 3.9.0)
+  secure_headers (~> 6.3)
   selenium-webdriver
   sendgrid-ruby
   slack-ruby-client
