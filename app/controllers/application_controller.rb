@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
     before_action :set_current_user
-    ensure_security_headers
 
     def require_admin
       # depending on your auth, something like...
