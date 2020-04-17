@@ -12,59 +12,61 @@ class PagesController < ApplicationController
   end
   
   def create
-    
-    @lead = Lead.create(
-      full_name: params[:contact_full_Name],
-      business_name: params[:contact_business_name],
-      email: params[:contact_email],
-      phone: params[:contact_phone],
-      project_name: params[:contact_project_name],
-      project_description: params[:contact_project_description],
-      department: params[:contact_department],
-      message: params[:contact_message],
-      file_attachment: params[:contact_attachment]
-    )
-    
-    data = {
-      personalizations: [
-        {
-          to: [
-            {
-              email: @lead.email
-            }
-          ],
-          dynamic_template_data: {
-            subject: "Thank you for contacting us!",
-            full_name: @lead.full_name,
-            project_name: @lead.project_name
-          },
-        }
-      ],
-      from: {
-        email: "info@felixdallaire.ca"
-      },
-      template_id: ENV['sendgrid_template_id']
-    }
-    puts "********************************************"
-    sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
-    puts sg
-    puts "********************************************"
-    response = sg.client.mail._("send").post(request_body: data)
-    puts response.as_json
-    puts "********************************************"
-    
-    ZendeskAPI::Ticket.create!($client, 
-      :subject => "#{@lead.full_name} from #{@lead.business_name}",
-      :comment => { :value => "The contact #{@lead.full_name} from company #{@lead.business_name} can be reached 
-      at email #{@lead.email} and at phone number #{@lead.phone}. 
-      #{@lead.department} has a project named #{@lead.project_name} which would require contribution from Rocket Elevators. 
-      #{@lead.project_description}
-      Attached Message: #{@lead.message}
-      The Contact uploaded an attachment"},
-      :type => "question",
-      :priority => "normal")
+    $fileextension = File.extname("#{params[:contact_attachment].path}")
+    if $fileextension == ".pdf" || $fileextension == ".jpg" || $fileextension == ".png"     
+      @lead = Lead.create(
+        full_name: params[:contact_full_Name],
+        business_name: params[:contact_business_name],
+        email: params[:contact_email],
+        phone: params[:contact_phone],
+        project_name: params[:contact_project_name],
+        project_description: params[:contact_project_description],
+        department: params[:contact_department],
+        message: params[:contact_message],
+        file_attachment: params[:contact_attachment]
+      )
       
-      redirect_to "/index"
+      data = {
+        personalizations: [
+          {
+            to: [
+              {
+                email: @lead.email
+              }
+            ],
+            dynamic_template_data: {
+              subject: "Thank you for contacting us!",
+              full_name: @lead.full_name,
+              project_name: @lead.project_name
+            },
+          }
+        ],
+        from: {
+          email: "info@felixdallaire.ca"
+        },
+        template_id: ENV['sendgrid_template_id']
+      }
+      puts "********************************************"
+      sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
+      puts sg
+      puts "********************************************"
+      response = sg.client.mail._("send").post(request_body: data)
+      puts response.as_json
+      puts "********************************************"
+      
+      ZendeskAPI::Ticket.create!($client, 
+        :subject => "#{@lead.full_name} from #{@lead.business_name}",
+        :comment => { :value => "The contact #{@lead.full_name} from company #{@lead.business_name} can be reached 
+        at email #{@lead.email} and at phone number #{@lead.phone}. 
+        #{@lead.department} has a project named #{@lead.project_name} which would require contribution from Rocket Elevators. 
+        #{@lead.project_description}
+        Attached Message: #{@lead.message}
+        The Contact uploaded an attachment"},
+        :type => "question",
+        :priority => "normal")
+        
+        redirect_to "/index"
+      end
     end
     
     
