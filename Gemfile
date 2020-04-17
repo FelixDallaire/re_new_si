@@ -34,7 +34,7 @@ gem "font-awesome-rails"
 gem 'geocoder' 
 
 gem 'rails-html-sanitizer', '~> 1.3' # Audit suggest 1.0.3 but 1.3 is the most recent and patched version
-gem 'secure_headers', '~> 2.1'
+gem 'secure_headers', '~> 3.9', '>= 3.9.0'
 
 
 gem 'ibm_watson' 
