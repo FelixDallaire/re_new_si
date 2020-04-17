@@ -8,7 +8,7 @@ gem 'rails', '~> 5.2.4', '>= 5.2.4.1'
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.4.4', '< 0.6.0' 
 # Use Puma as the app server
-gem 'puma', '~> 3.12.4' 
+gem 'puma', '~> 3.12.4'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0' 
 # Use Uglifier as compressor for JavaScript assets
@@ -34,7 +34,7 @@ gem "font-awesome-rails"
 gem 'geocoder' 
 
 gem 'rails-html-sanitizer', '~> 1.3' # Audit suggest 1.0.3 but 1.3 is the most recent and patched version
-gem 'secure_headers', '~> 2.1'
+gem 'secure_headers', '~> 3.9', '>= 3.9.0'
 
 
 gem 'ibm_watson' 
@@ -95,7 +95,7 @@ gem 'capistrano', '~> 3.12', require: false
 gem 'capistrano-rails', '~> 1.4', require: false 
 gem 'capistrano-bundler', '>= 1.1.0' 
 gem 'rvm1-capistrano3', require: false 
-gem 'capistrano3-puma', '>= 3.1.1' 
+gem 'capistrano3-puma', '>= 3.1.1'
 
 # Dropbox
 gem 'dropbox_api' 
