@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
 
   devise_for :employees
-  devise_for :users
+  # devise_for :users
   
  #get "users/sign_out" => 'pages#index'
   
@@ -16,8 +16,7 @@ Rails.application.routes.draw do
 
   delete 'index' => 'pages#destroy'
 
-
-
+  devise_for :users, :controllers => { :registrations => "users/registrations", :sessions => "users/sessions", :passwords => 		"users/passwords" }
 
 
  post 'index' => 'pages#create'

@@ -23,6 +23,12 @@
 			  <%= f.label :remember_me %>
 			</div>
 		  <% end %>
+
+			<div class="field">
+			    <%= flash[:recaptcha_error] %>
+				<%= recaptcha_tags %>
+			</div>
+
 		
 		  <div class="actions">
 			<%= f.submit "Log in" %>
@@ -32,8 +38,7 @@
 		<%= render "devise/shared/links" %>
 
 	</div>
-	<div class="formContainer stack-top-right"></div>
-	<div class="formContainer stack-top-left"></div>
+
 
 </div>
 

@@ -22,39 +22,13 @@
 .formContainer{
     background-color: white;
     margin: 5vh;
-    width: 35vh;
-    height: 50vh;
+    width: 45vh;
+    height: 60vh;
     padding: 10px;
     -webkit-box-shadow: 0px 0px 55px -20px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 0px 55px -20px rgba(0,0,0,0.75);
     box-shadow: 0px 0px 55px -20px rgba(0,0,0,0.75);
     z-index: 10;
-}
-
-.stack-top-right {
-    background-color: white;
-    top: 16vh;
-    right: 65vh;
-    z-index: 5;
-    margin: 20px;
-    position: absolute;
-    width: 35vh;
-    height: 50vh;
-    -ms-transform: rotate(10deg);
-    transform: rotate(10deg);
-}
-
-.stack-top-left {
-    background-color: white;
-    top: 16vh;
-    left: 65vh;
-    z-index: 1;
-    margin: 20px;
-    position: absolute;
-    width: 35vh;
-    height: 50vh;
-    -ms-transform: rotate(-10deg);
-    transform: rotate(-10deg);
 }
 
 //##################################### SIGNUP ZONE #####################################
