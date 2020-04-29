@@ -10,10 +10,18 @@ class PagesController < ApplicationController
   def index
     
   end
-  
-  def create
-    $fileextension = File.extname("#{params[:contact_attachment].path}")
-    if $fileextension == ".pdf" || $fileextension == ".jpg" || $fileextension == ".png"     
+
+def fileformat
+    if params[:contact_attachment].nil?
+      return @fileextension = true
+    else 
+      return @fileextension = File.extname("#{params[:contact_attachment].path}")
+    end
+end
+
+  def create()
+    fileextension = fileformat()
+    if fileextension == ".pdf" || fileextension == ".jpg" || fileextension == ".png" || fileextension == true 
       @lead = Lead.create(
         full_name: params[:contact_full_Name],
         business_name: params[:contact_business_name],
@@ -54,16 +62,16 @@ class PagesController < ApplicationController
       puts response.as_json
       puts "********************************************"
       
-      ZendeskAPI::Ticket.create!($client, 
-        :subject => "#{@lead.full_name} from #{@lead.business_name}",
-        :comment => { :value => "The contact #{@lead.full_name} from company #{@lead.business_name} can be reached 
-        at email #{@lead.email} and at phone number #{@lead.phone}. 
-        #{@lead.department} has a project named #{@lead.project_name} which would require contribution from Rocket Elevators. 
-        #{@lead.project_description}
-        Attached Message: #{@lead.message}
-        The Contact uploaded an attachment"},
-        :type => "question",
-        :priority => "normal")
+      # ZendeskAPI::Ticket.create!($client, 
+      #   :subject => "#{@lead.full_name} from #{@lead.business_name}",
+      #   :comment => { :value => "The contact #{@lead.full_name} from company #{@lead.business_name} can be reached 
+      #   at email #{@lead.email} and at phone number #{@lead.phone}. 
+      #   #{@lead.department} has a project named #{@lead.project_name} which would require contribution from Rocket Elevators. 
+      #   #{@lead.project_description}
+      #   Attached Message: #{@lead.message}
+      #   The Contact uploaded an attachment"},
+      #   :type => "question",
+      #   :priority => "normal")
         
         redirect_to "/index"
       end

@@ -121,18 +121,18 @@ class InterventionController < ApplicationController
           )
 
     
-          ZendeskAPI::Ticket.create!($client, 
-            :subject => "New intervention from #{@intervention.Author} for #{@business_name}'s building.'",
-            :comment => { :value => "There is a new intervention at the building id:#{@intervention.BuildingID}.
-            Here is the informations of the building:
-            Battery id: #{@intervention.BatteryID}
-            Column id: #{@intervention.ColumnID}
-            Elevator id: #{@intervention.ElevatorID}
-            Employee in charge of the intervention: #{@intervention.EmployeeID}
-            Description: #{@intervention.Rapport}
-            " }, 
-            :type => 'problem',
-            :priority => "normal")
+        #   ZendeskAPI::Ticket.create!($client, 
+        #     :subject => "New intervention from #{@intervention.Author} for #{@business_name}'s building.'",
+        #     :comment => { :value => "There is a new intervention at the building id:#{@intervention.BuildingID}.
+        #     Here is the informations of the building:
+        #     Battery id: #{@intervention.BatteryID}
+        #     Column id: #{@intervention.ColumnID}
+        #     Elevator id: #{@intervention.ElevatorID}
+        #     Employee in charge of the intervention: #{@intervention.EmployeeID}
+        #     Description: #{@intervention.Rapport}
+        #     " }, 
+        #     :type => 'problem',
+        #     :priority => "normal")
      
         redirect_to "/intervention"
     end
