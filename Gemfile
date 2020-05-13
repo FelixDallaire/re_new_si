@@ -94,10 +94,17 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 
 gem 'capistrano', '~> 3.12', require: false 
+gem 'rvm1-capistrano3', require: false 
 gem 'capistrano-rails', '~> 1.4', require: false 
 gem 'capistrano-bundler', '>= 1.1.0' 
-gem 'rvm1-capistrano3', require: false 
 gem 'capistrano3-puma', '>= 3.1.1' 
+
+
+# gem 'capistrano',         require: false
+# gem 'capistrano-rvm',     require: false
+# gem 'capistrano-rails',   require: false
+# gem 'capistrano-bundler', require: false
+# gem 'capistrano3-puma',   require: false
 
 # Dropbox
 gem 'dropbox_api' 
