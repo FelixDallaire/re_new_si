@@ -122,3 +122,8 @@ gem 'figaro'
 gem 'pry-byebug' 
 
 gem 'zendesk_api', git: 'https://github.com/zendesk/zendesk_api_client_rb' 
+
+# Google analytic
+gem 'google-api-client', '~> 0.34'
+# gem 'google-api-client', '~> 0.11', require: ‘google/apis/analyticsreporting_v4’
+gem 'googleauth'
