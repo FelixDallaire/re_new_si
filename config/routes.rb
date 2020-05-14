@@ -26,10 +26,13 @@ Rails.application.routes.draw do
   get 'home' => 'pages#home'
 
 
+  get 'users/corporate'  => 'pages#corporate'
   get 'corporate'  => 'pages#corporate'
 
+  get 'users/residential'  => 'pages#residential'
   get 'residential'  => 'pages#residential'
 
+  get 'users/submission' => 'quotes#submission'
   get 'submission' => 'quotes#submission'
 
   post 'submission' => 'quotes#create'
