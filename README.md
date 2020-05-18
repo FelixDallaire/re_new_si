@@ -1,6 +1,6 @@
 # Rocket_Elevators_Controllers
-Site is now online at http://fellixdallaire.ca/. Rails, mySQL and postgreSQL was used to make this possible.
-
+Site is now online at http://felixdallaire.ca/. Rails, mySQL and postgreSQL was used to make this possible.
+plan programmation: https://docs.google.com/document/d/1jn8KGRySXShqAKYIjs1tBUXjibIR92gfS7bUIF417aw/edit?usp=sharing
 Admin :     admin@hotmail.com/////123456 
 Basic User:       user@hotmail.com/////123456
 
