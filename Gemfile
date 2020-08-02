@@ -39,7 +39,7 @@ gem 'geocoder'
 
 gem 'rails-html-sanitizer', '~> 1.3' # Audit suggest 1.0.3 but 1.3 is the most recent and patched version
 
-gem 'ibm_watson' 
+gem 'ibm_watson' , '>= 1.4.0'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2' 
