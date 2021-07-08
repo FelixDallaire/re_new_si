@@ -39,7 +39,7 @@ gem 'geocoder'
 
 gem 'rails-html-sanitizer', '~> 1.3' # Audit suggest 1.0.3 but 1.3 is the most recent and patched version
 
-gem 'ibm_watson' 
+gem 'ibm_watson' , '>= 1.4.0'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2' 
@@ -83,7 +83,7 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15' 
+  gem 'capybara', '>= 3.32.1'
   gem 'selenium-webdriver' 
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper' 
@@ -110,7 +110,7 @@ gem 'capistrano3-puma', '>= 3.1.1'
 gem 'dropbox_api' 
 #Slack integration gems
 gem 'slack-ruby-client' 
-gem 'http' 
+gem 'http' , '>= 4.1.1'
 
 #Environment variables for credential protection
   # The generator creates a config/application.yml file and modifies the .gitignore file to prevent the file from being checked into a git repository.
@@ -124,8 +124,8 @@ gem 'pry-byebug'
 gem 'zendesk_api', git: 'https://github.com/zendesk/zendesk_api_client_rb' 
 
 # Google analytic
-gem 'google-api-client', '~> 0.34'
+gem 'google-api-client', '~> 0.39', '>= 0.39.3'
 # gem 'google-api-client', '~> 0.11', require: ‘google/apis/analyticsreporting_v4’
-gem 'googleauth'
+gem 'googleauth', '>= 0.12.0'
 # New Relic
 gem 'newrelic_rpm'
