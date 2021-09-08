@@ -25,7 +25,7 @@ gem 'devise_zxcvbn'
 
 
 gem "recaptcha", "5.5.0"
-gem 'better_errors', '~> 2.5', '>= 2.5.1'
+gem 'better_errors', '~> 2.8'
 
 gem 'faker' 
 
