@@ -8,7 +8,7 @@ gem 'rails', '~> 5.2.4', '>= 5.2.4.2'
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.4.4', '< 0.6.0' 
 # Use Puma as the app server
-gem 'puma', '~> 3.12.4' 
+gem 'puma', '~> 5.6.8'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.1', '>= 5.1.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -97,7 +97,7 @@ gem 'capistrano', '~> 3.12', require: false
 gem 'rvm1-capistrano3', require: false 
 gem 'capistrano-rails', '~> 1.4', require: false 
 gem 'capistrano-bundler', '>= 1.1.0' 
-gem 'capistrano3-puma', '>= 3.1.1' 
+gem 'capistrano3-puma', '>= 5.0.0'
 
 
 # gem 'capistrano',         require: false
