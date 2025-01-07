@@ -97,7 +97,7 @@ gem 'capistrano', '~> 3.12', require: false
 gem 'rvm1-capistrano3', require: false 
 gem 'capistrano-rails', '~> 1.4', require: false 
 gem 'capistrano-bundler', '>= 1.1.0' 
-gem 'capistrano3-puma', '>= 3.1.1' 
+gem 'capistrano3-puma', '>= 6.0.0'
 
 
 # gem 'capistrano',         require: false
